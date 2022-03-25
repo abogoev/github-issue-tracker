@@ -10,7 +10,7 @@ export type StackParams = {
   [CurrentRoute.Details]: undefined;
 };
 
-export type HomeNavigationProps = NativeStackScreenProps<
+type HomeNavigationProps = NativeStackScreenProps<
   StackParams,
   typeof CurrentRoute.Home
 >;

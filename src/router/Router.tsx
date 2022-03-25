@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "../screens/home/Home";
 import Details from "../screens/about/Details";
-import { CurrentRoute, StackParams } from "..";
+import { CurrentRoute, StackParams } from "../types.d";
 
 const Stack = createNativeStackNavigator<StackParams>();
 
