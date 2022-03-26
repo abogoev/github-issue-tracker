@@ -1,8 +1,19 @@
 import React from "react";
-import Router from "./src/router/Router";
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
+import MainApp from "./MainApp";
 
 const App = () => {
-  return <Router />;
+  const [fontsLoaded] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    Helvetica: require("./assets/fonts/Helvetica.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+  return <MainApp />;
 };
 
 export default App;
