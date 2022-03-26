@@ -3,9 +3,11 @@ import { TextStyle } from "react-native";
 interface Theme {
   palette: typeof palette;
   typography: {
+    verylargeText: TextStyle;
     largeText: TextStyle;
     regularText: TextStyle;
     regularTextBold: TextStyle;
+    smallText: TextStyle;
   };
   borderRadius: 6;
 }
@@ -13,23 +15,32 @@ interface Theme {
 const HELVETICA = "Helvetica";
 
 const palette = {
-  green: "#2da44e",
+  green: "rgb(45, 164, 78)",
   blue: "rgb(9, 105, 218)",
+  purple: "rgb(130, 80, 223)",
+  darkBlue: "rgba(9,105,218,0.3)",
+  white: "#fff",
   lightGrey: "rgb(246, 248, 250)",
   grey: "rgb(216, 222, 228)",
   neutral: "rgb(208, 215, 222)",
-  white: "#fff",
+  darkGrey: "rgb(87, 96, 106)",
   veryDarkGrey: "#24292f",
 };
 
 const theme: Theme = {
   palette,
   typography: {
-    largeText: {
+    verylargeText: {
       fontFamily: HELVETICA,
       fontSize: 24,
       lineHeight: 36,
       fontWeight: "300",
+    },
+    largeText: {
+      fontFamily: HELVETICA,
+      fontSize: 16,
+      lineHeight: 24,
+      fontWeight: "600",
     },
     regularText: {
       fontFamily: HELVETICA,
@@ -42,6 +53,11 @@ const theme: Theme = {
       fontSize: 14,
       lineHeight: 20,
       fontWeight: "500",
+    },
+    smallText: {
+      fontFamily: HELVETICA,
+      fontSize: 12,
+      lineHeight: 18,
     },
   },
   borderRadius: 6,

@@ -5,19 +5,22 @@ Object {
   "borderRadius": 6,
   "palette": Object {
     "blue": "rgb(9, 105, 218)",
-    "green": "#2da44e",
+    "darkBlue": "rgba(9,105,218,0.3)",
+    "darkGrey": "rgb(87, 96, 106)",
+    "green": "rgb(45, 164, 78)",
     "grey": "rgb(216, 222, 228)",
     "lightGrey": "rgb(246, 248, 250)",
     "neutral": "rgb(208, 215, 222)",
+    "purple": "rgb(130, 80, 223)",
     "veryDarkGrey": "#24292f",
     "white": "#fff",
   },
   "typography": Object {
     "largeText": Object {
       "fontFamily": "Helvetica",
-      "fontSize": 24,
-      "fontWeight": "300",
-      "lineHeight": 36,
+      "fontSize": 16,
+      "fontWeight": "600",
+      "lineHeight": 24,
     },
     "regularText": Object {
       "fontFamily": "Helvetica",
@@ -30,6 +33,17 @@ Object {
       "fontSize": 14,
       "fontWeight": "500",
       "lineHeight": 20,
+    },
+    "smallText": Object {
+      "fontFamily": "Helvetica",
+      "fontSize": 12,
+      "lineHeight": 18,
+    },
+    "verylargeText": Object {
+      "fontFamily": "Helvetica",
+      "fontSize": 24,
+      "fontWeight": "300",
+      "lineHeight": 36,
     },
   },
 }
