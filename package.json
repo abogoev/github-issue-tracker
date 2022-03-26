@@ -37,6 +37,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-native-a11y": "^3.2.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "jest-expo": "^44.0.1",
     "prettier": "^2.6.1",
@@ -54,6 +55,9 @@
       "tsx",
       "js",
       "jsx"
-    ]
+    ],
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
   }
 }

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`theme should match snapshot 1`] = `
+Object {
+  "palette": Object {
+    "blue": "rgb(9, 105, 218)",
+    "green": "#2da44e",
+    "grey": "rgb(216, 222, 228)",
+    "lightGrey": "rgb(246, 248, 250)",
+    "veryDarkGrey": "#24292f",
+    "white": "#fff",
+  },
+  "typography": Object {
+    "largeText": Object {
+      "fontSize": 24,
+      "fontWeight": "300",
+      "lineHeight": 36,
+    },
+    "regularText": Object {
+      "fontSize": 14,
+      "fontWeight": "400",
+      "lineHeight": 21,
+    },
+  },
+}
+`;
