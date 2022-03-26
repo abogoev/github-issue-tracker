@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenClosedBadge should render correctly: for a Closed issue 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "flex-start",
+        "backgroundColor": "rgb(130, 80, 223)",
+        "borderRadius": 28,
+        "flexDirection": "row",
+        "height": 32,
+        "paddingHorizontal": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <svg
+    data-file-name="SvgClosedIssueWhite"
+  />
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontFamily": "Helvetica",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "lineHeight": 20,
+      }
+    }
+  >
+     Closed
+  </Text>
+</View>
+`;
+
+exports[`OpenClosedBadge should render correctly: for an Open issue 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "alignSelf": "flex-start",
+        "backgroundColor": "rgb(45, 164, 78)",
+        "borderRadius": 28,
+        "flexDirection": "row",
+        "height": 32,
+        "paddingHorizontal": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <svg
+    data-file-name="SvgOpenIssueWhite"
+  />
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontFamily": "Helvetica",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "lineHeight": 20,
+      }
+    }
+  >
+     Open
+  </Text>
+</View>
+`;
