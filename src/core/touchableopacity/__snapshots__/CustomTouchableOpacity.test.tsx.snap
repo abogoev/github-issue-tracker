@@ -16,5 +16,9 @@ exports[`CustomTouchableOpacity should render correctly 1`] = `
       "opacity": 1,
     }
   }
-/>
+>
+  <Text>
+    Hello
+  </Text>
+</View>
 `;
