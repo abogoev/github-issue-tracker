@@ -30,3 +30,9 @@ export type Issue = {
   };
   body: string;
 };
+
+export interface IssueSearchParams {
+  owner: string;
+  repo: string;
+  number: number;
+}
