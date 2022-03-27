@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenClosedBadge should render correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "borderColor": "rgb(208, 215, 222)",
+      "borderWidth": 1,
+      "minHeight": 62,
+      "opacity": 1,
+      "padding": 8,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <svg
+      data-file-name="SvgOpenIssue"
+      style={
+        Object {
+          "marginHorizontal": 8,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Text
+        numberOfLines={2}
+        style={
+          Object {
+            "color": "#24292f",
+            "fontFamily": "Helvetica",
+            "fontSize": 16,
+            "fontWeight": "600",
+            "lineHeight": 24,
+          }
+        }
+      >
+        Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id 
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "rgb(87, 96, 106)",
+            "fontFamily": "Helvetica",
+            "fontSize": 12,
+            "lineHeight": 18,
+            "marginTop": 4,
+          }
+        }
+      >
+        #5 opened on 27/03/2022, 22:56:19 by vanko
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <svg
+        data-file-name="SvgBook"
+      />
+    </View>
+  </View>
+</View>
+`;

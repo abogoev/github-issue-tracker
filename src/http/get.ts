@@ -10,6 +10,12 @@ export const getIssuesByOwnerAndRepo = async (
     `/repos/${owner}/${repo}/issues`,
     { params: { per_page: 50, page } }
   );
-  console.log(res.data.length);
+  return res.data;
+};
+
+export const getIssue = async (owner: string, repo: string, number: number) => {
+  const res = await axiosInstance.get<Issue>(
+    `/repos/${owner}/${repo}/issues/${number}`
+  );
   return res.data;
 };

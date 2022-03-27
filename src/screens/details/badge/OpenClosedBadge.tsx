@@ -1,8 +1,8 @@
 import React, { VFC } from "react";
 import { StyleSheet, Text, View, ViewProps } from "react-native";
-import theme from "../../theme/theme";
-import OpenIssueSvg from "../../../assets/svg/open-issue-white.svg";
-import ClosedIssueSvg from "../../../assets/svg/closed-issue-white.svg";
+import theme from "../../../theme/theme";
+import OpenIssueWhiteIcon from "../../../../assets/svg/open-issue-white.svg";
+import ClosedIssueWhiteIcon from "../../../../assets/svg/closed-issue-white.svg";
 
 interface Props extends ViewProps {
   isClosed?: boolean;
@@ -11,7 +11,7 @@ interface Props extends ViewProps {
 const OpenClosedBadge: VFC<Props> = ({ isClosed, style }) => {
   return (
     <View style={[styles(isClosed).container, style]}>
-      {isClosed ? <ClosedIssueSvg /> : <OpenIssueSvg />}
+      {isClosed ? <ClosedIssueWhiteIcon /> : <OpenIssueWhiteIcon />}
       <Text style={styles().label}>{isClosed ? " Closed" : " Open"}</Text>
     </View>
   );

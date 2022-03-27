@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageItem should render correctly: when page is active 1`] = `
+<View
+  accessibilityRole="button"
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignSelf": "flex-start",
+      "backgroundColor": "rgb(9, 105, 218)",
+      "borderColor": "transparent",
+      "borderRadius": 6,
+      "borderWidth": 1,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 5,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontFamily": "Helvetica",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "lineHeight": 20,
+      }
+    }
+  >
+    1
+  </Text>
+</View>
+`;
+
+exports[`PageItem should render correctly: when page is not active 1`] = `
+<View
+  accessibilityRole="button"
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignSelf": "flex-start",
+      "backgroundColor": "transparent",
+      "borderColor": "rgb(208, 215, 222)",
+      "borderRadius": 6,
+      "borderWidth": 1,
+      "opacity": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 5,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#24292f",
+        "fontFamily": "Helvetica",
+        "fontSize": 14,
+        "fontWeight": "500",
+        "lineHeight": 20,
+      }
+    }
+  >
+    1
+  </Text>
+</View>
+`;
