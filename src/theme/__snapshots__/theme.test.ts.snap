@@ -12,6 +12,7 @@ Object {
     "lightGrey": "rgb(246, 248, 250)",
     "neutral": "rgb(208, 215, 222)",
     "purple": "rgb(130, 80, 223)",
+    "transparent": "transparent",
     "veryDarkGrey": "#24292f",
     "white": "#fff",
   },

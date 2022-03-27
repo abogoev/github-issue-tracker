@@ -20,6 +20,7 @@ const palette = {
   purple: "rgb(130, 80, 223)",
   darkBlue: "rgba(9,105,218,0.3)",
   white: "#fff",
+  transparent: "transparent",
   lightGrey: "rgb(246, 248, 250)",
   grey: "rgb(216, 222, 228)",
   neutral: "rgb(208, 215, 222)",
