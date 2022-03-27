@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "./src/router/Router";
+import Router from "../router/Router";
 
 const AppLoader = () => {
   return <Router />;

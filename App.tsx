@@ -1,7 +1,7 @@
 import React from "react";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
-import MainApp from "./MainApp";
+import MainApp from "./src/main/MainApp";
 
 const App = () => {
   const [fontsLoaded] = useFonts({

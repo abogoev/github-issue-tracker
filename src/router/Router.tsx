@@ -1,17 +1,26 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "../screens/home/Home";
-import Details from "../screens/about/Details";
-import { CurrentRoute, StackParams } from "../types.d";
+import Details from "../screens/details/Details";
+import { CurrentRoute, StackParams } from "../types";
+import theme from "../theme/theme";
 
 const Stack = createNativeStackNavigator<StackParams>();
+
+const containerTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: theme.palette.white,
+  },
+};
 
 const Router = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer theme={containerTheme}>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
