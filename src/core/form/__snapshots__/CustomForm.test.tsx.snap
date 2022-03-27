@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenClosedBadge should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgb(246, 248, 250)",
+        "borderColor": "rgb(216, 222, 228)",
+        "borderRadius": 6,
+        "borderWidth": 1,
+        "padding": 16,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Hello
+  </Text>
+</View>
+`;
