@@ -39,7 +39,6 @@ export type Issue = {
   body: string;
   createdAt: Date;
   closedAt: Date | null;
-  isp: IssueSearchParams;
 };
 
 export interface IssueSearchParams {

@@ -9,7 +9,7 @@ import { CurrentRoute, HomeNavigationProps, Issue } from "../../types";
 import Logo from "@assets/svg/logo.svg";
 import theme from "../../theme/theme";
 import IssueItem from "../../core/issueitem/IssueItem";
-import { getIssuesByOwnerAndRepo } from "../../http/get";
+import { fetchIssuesByOwnerAndRepo } from "../../http/get";
 import Pagination from "./pagination/Pagination";
 
 interface Props extends HomeNavigationProps {
@@ -24,7 +24,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
 
   const handleSearch = async (owner: string, repo: string) => {
     try {
-      const currentIssues = await getIssuesByOwnerAndRepo(owner, repo, 1);
+      const currentIssues = await fetchIssuesByOwnerAndRepo(owner, repo, 1);
       setIssues(currentIssues);
       const innerPages = Math.ceil(issues.length / 10);
       const nums = Array.from(

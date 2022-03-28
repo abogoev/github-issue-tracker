@@ -13,7 +13,7 @@ import { DetailsNavigationProps } from "../../types";
 import { VFC } from "react";
 import OpenClosedBadge from "./badge/OpenClosedBadge";
 import BackIcon from "../../../assets/svg/back.svg";
-import { getIssuesByOwnerAndRepo } from "../../http/get";
+import { fetchIssuesByOwnerAndRepo } from "../../http/get";
 
 interface Props extends DetailsNavigationProps {
   a: boolean;
@@ -27,7 +27,7 @@ const Details: VFC<Props> = ({ route, navigation }) => {
   useEffect(() => {
     (async () => {
       try {
-        await getIssuesByOwnerAndRepo("octocat", "hello-world");
+        await fetchIssuesByOwnerAndRepo("octocat", "hello-world");
       } catch (error) {
         console.log(error);
       }

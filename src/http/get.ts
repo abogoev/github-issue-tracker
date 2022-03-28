@@ -1,7 +1,7 @@
 import { Issue } from "../types";
 import axiosInstance from "./axiosInstance";
 
-export const getIssuesByOwnerAndRepo = async (
+export const fetchIssuesByOwnerAndRepo = async (
   owner: string,
   repo: string,
   page: number

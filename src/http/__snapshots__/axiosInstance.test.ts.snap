@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`axiosInstance should match snapshot 1`] = `
+Object {
+  "adapter": [Function],
+  "baseURL": "https://api.github.com",
+  "headers": Object {
+    "common": Object {
+      "Accept": "application/json, text/plain, */*",
+    },
+    "delete": Object {},
+    "get": Object {},
+    "head": Object {},
+    "patch": Object {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    "post": Object {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    "put": Object {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  },
+  "maxBodyLength": -1,
+  "maxContentLength": -1,
+  "timeout": 5000,
+  "transformRequest": Array [
+    [Function],
+  ],
+  "transformResponse": Array [
+    [Function],
+  ],
+  "transitional": Object {
+    "clarifyTimeoutError": false,
+    "forcedJSONParsing": true,
+    "silentJSONParsing": true,
+  },
+  "validateStatus": [Function],
+  "xsrfCookieName": "XSRF-TOKEN",
+  "xsrfHeaderName": "X-XSRF-TOKEN",
+}
+`;
