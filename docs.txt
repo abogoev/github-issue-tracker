@@ -1,0 +1,16 @@
+This project is called Github Issue Tracker. 
+The design is entirely based on Github (form, buttons, text, inputs, issues, message boxes, badges, everything).
+It consists of 3 screen: 
+    - Home screen with a search form and a paginated list of issues
+    - Details screen for each selected issue
+    - Bookmarks screen for the bookmarked issues
+It is created with TypeScript and Expo.
+It includes:
+    - strict linting (configurations: react, react-native-community, google, prettier, a11y for accessibility )
+    - theming (typography, colors and other things based on the design which makes styling a new component a breeze)
+    - custom fonts (non-system) and svg support
+    - SafeAreaView
+    - testing with jest and react-test-renderer
+    - react-navigation for navigating between screens (Deep Linking can be easily integrated as opposed to react-router-native)
+    - AsyncStorage for storing bookmarked issues (you don't lose it when you quit the app, Redux is for rerendering)
+    - Formik and yup for input validation

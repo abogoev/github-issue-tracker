@@ -3,29 +3,27 @@ import { VFC } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import OpenIssueIcon from "../../../assets/svg/open-issue.svg";
 import ClosedIssueIcon from "../../../assets/svg/closed-issue.svg";
-import BookIcon from "../../../assets/svg/book.svg";
-import BookYellowIcon from "../../../assets/svg/book-yellow.svg";
 import theme from "../../theme/theme";
 import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
 import Bookmark from "../bookmark/Bookmark";
+import { Issue, IssueSearchParams } from "../../types";
 
-interface Props extends Omit<CustomTouchableOpacityProps, "children"> {
-  title: string;
-  issueNumber: number;
-  createdAt: Date;
-  closedAt: Date | null;
-  username: string;
-}
+interface Props
+  extends Omit<CustomTouchableOpacityProps, "children">,
+    IssueSearchParams,
+    Issue {}
 
 const IssueItem: VFC<Props> = ({
   style,
   title,
-  issueNumber,
   createdAt,
   closedAt,
-  username,
+  user,
+  owner,
+  repo,
+  number,
   ...props
 }) => {
   return (
@@ -42,9 +40,11 @@ const IssueItem: VFC<Props> = ({
           </Text>
           <Text
             style={styles.description}
-          >{`#${issueNumber} opened on ${createdAt.toLocaleString()} by ${username}`}</Text>
+          >{`#${number} opened on ${createdAt.toLocaleString()} by ${
+            user.login
+          }`}</Text>
         </View>
-        <Bookmark />
+        <Bookmark owner={owner} repo={repo} number={number} />
       </View>
     </CustomTouchableOpacity>
   );

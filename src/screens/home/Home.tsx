@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../core/button/CustomButton";
 import CustomContainer from "../../core/container/CustomContainer";
-import CustomForm from "../../core/form/CustomForm";
+import CustomBox from "../../core/form/CustomBox";
 import CustomTextInput from "../../core/textinput/CustomTextInput";
 import { CurrentRoute, HomeNavigationProps, Issue } from "../../types";
 import Logo from "../../../assets/svg/logo.svg";
@@ -45,10 +45,13 @@ const Home: React.FC<Props> = ({ navigation }) => {
       <CustomContainer style={{ paddingTop: "10%" }}>
         <Logo style={styles.logo} />
         <Text style={styles.title}>Github Issue Tracker</Text>
-        <CustomForm>
+        <CustomBox>
           <CustomTextInput
             label="Owner"
-            textInputProps={{ accessibilityLabel: "Owner of the repository" }}
+            textInputProps={{
+              accessibilityLabel: "Owner of the repository",
+              onChangeText = {},
+            }}
             style={{ marginBottom: 16 }}
           />
           <CustomTextInput
@@ -57,13 +60,13 @@ const Home: React.FC<Props> = ({ navigation }) => {
             style={{ marginBottom: 16 }}
           />
           <CustomButton title="Search" />
-        </CustomForm>
+        </CustomBox>
         <IssueItem
           title="Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id "
-          issueNumber={5}
+          number={5}
           createdAt={new Date()}
           closedAt={null}
-          username="vanko"
+          user={{ login: "vanko", avatar_url: "" }}
           onPress={() =>
             navigation.navigate(CurrentRoute.Details, {
               owner: "asd",

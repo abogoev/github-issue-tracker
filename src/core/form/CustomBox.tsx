@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { StyleSheet, View, ViewProps } from "react-native";
 import theme from "../../theme/theme";
 
-const CustomForm: FC<ViewProps> = ({ style, ...props }) => {
+const CustomBox: FC<ViewProps> = ({ style, ...props }) => {
   return <View style={[styles.container, style]} {...props} />;
 };
 
@@ -16,4 +16,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomForm;
+export default CustomBox;
