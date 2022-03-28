@@ -6,7 +6,7 @@ import CustomContainer from "../../core/container/CustomContainer";
 import CustomBox from "../../core/form/CustomBox";
 import CustomTextInput from "../../core/textinput/CustomTextInput";
 import { CurrentRoute, HomeNavigationProps, Issue } from "../../types";
-import Logo from "../../../assets/svg/logo.svg";
+import Logo from "@assets/svg/logo.svg";
 import theme from "../../theme/theme";
 import IssueItem from "../../core/issueitem/IssueItem";
 import { getIssuesByOwnerAndRepo } from "../../http/get";
@@ -50,7 +50,6 @@ const Home: React.FC<Props> = ({ navigation }) => {
             label="Owner"
             textInputProps={{
               accessibilityLabel: "Owner of the repository",
-              onChangeText = {},
             }}
             style={{ marginBottom: 16 }}
           />
@@ -61,7 +60,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
           />
           <CustomButton title="Search" />
         </CustomBox>
-        <IssueItem
+        {/* <IssueItem
           title="Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id "
           number={5}
           createdAt={new Date()}
@@ -74,7 +73,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
               number: 1,
             })
           }
-        />
+        /> */}
         <Pagination
           numbers={[1, 2, 3, 4, 5]}
           activeNumber={activeNumber}
