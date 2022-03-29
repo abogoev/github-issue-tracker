@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomTextInput should render correctly: with focus 1`] = `
+<View>
+  <Text
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "color": "#24292f",
+          "fontFamily": "Helvetica",
+          "fontSize": 14,
+          "fontWeight": "400",
+          "lineHeight": 21,
+          "marginBottom": 8,
+        },
+      ]
+    }
+  >
+    Owner
+  </Text>
+  <View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgba(9,105,218,0.3)",
+          "borderRadius": 6,
+          "bottom": 0,
+          "left": 0,
+          "margin": -3,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      autoCorrect={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rejectResponderTermination={true}
+      selectionColor="#24292f"
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderColor": "rgb(9, 105, 218)",
+          "borderRadius": 6,
+          "borderWidth": 1,
+          "color": "#24292f",
+          "fontFamily": "Helvetica",
+          "fontSize": 14,
+          "fontWeight": "400",
+          "lineHeight": 21,
+          "paddingHorizontal": 12,
+          "paddingVertical": 5,
+        }
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "rgb(207, 34, 46)",
+        "fontFamily": "Helvetica",
+        "fontSize": 12,
+        "lineHeight": 18,
+      }
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`CustomTextInput should render correctly: without focus 1`] = `
+<View>
+  <Text
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignSelf": "flex-start",
+          "color": "#24292f",
+          "fontFamily": "Helvetica",
+          "fontSize": 14,
+          "fontWeight": "400",
+          "lineHeight": 21,
+          "marginBottom": 8,
+        },
+      ]
+    }
+  >
+    Owner
+  </Text>
+  <View>
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      autoCorrect={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      rejectResponderTermination={true}
+      selectionColor="#24292f"
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderColor": "rgb(208, 215, 222)",
+          "borderRadius": 6,
+          "borderWidth": 1,
+          "color": "#24292f",
+          "fontFamily": "Helvetica",
+          "fontSize": 14,
+          "fontWeight": "400",
+          "lineHeight": 21,
+          "paddingHorizontal": 12,
+          "paddingVertical": 5,
+        }
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+  <Text
+    style={
+      Object {
+        "color": "rgb(207, 34, 46)",
+        "fontFamily": "Helvetica",
+        "fontSize": 12,
+        "lineHeight": 18,
+      }
+    }
+  >
+    
+  </Text>
+</View>
+`;

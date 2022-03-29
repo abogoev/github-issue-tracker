@@ -11,10 +11,16 @@ import theme from "../../theme/theme";
 
 interface Props extends ViewProps {
   label: string;
-  textInputProps: TextInputProps;
+  textInputProps?: TextInputProps;
+  error?: string;
 }
 
-const CustomTextInput: FC<Props> = ({ label, textInputProps, ...props }) => {
+const CustomTextInput: FC<Props> = ({
+  label,
+  textInputProps,
+  error = "",
+  ...props
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const ref = useRef<TextInput>(null);
@@ -37,6 +43,7 @@ const CustomTextInput: FC<Props> = ({ label, textInputProps, ...props }) => {
           {...textInputProps}
         />
       </View>
+      <Text style={styles().error}>{error}</Text>
     </View>
   );
 };
@@ -64,6 +71,10 @@ const styles = (isFocused?: boolean) =>
       paddingHorizontal: 12,
       paddingVertical: 5,
       backgroundColor: theme.palette.white,
+    },
+    error: {
+      ...theme.typography.smallText,
+      color: theme.palette.red,
     },
   });
 
