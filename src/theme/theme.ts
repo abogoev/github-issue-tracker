@@ -17,6 +17,7 @@ const HELVETICA = "Helvetica";
 const palette = {
   green: "rgb(45, 164, 78)",
   blue: "rgb(9, 105, 218)",
+  red: "rgb(207, 34, 46)",
   purple: "rgb(130, 80, 223)",
   darkBlue: "rgba(9,105,218,0.3)",
   white: "#fff",
