@@ -4,10 +4,20 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Home from "../screens/home/Home";
 import Details from "../screens/details/Details";
-import { CurrentRoute, StackParams } from "../types";
 import theme from "../theme/theme";
+import {
+  BOOKMARKS_SCREEN,
+  DETAILS_SCREEN,
+  HOME_SCREEN,
+} from "../utils/constants";
 
-const Stack = createNativeStackNavigator<StackParams>();
+export type RootStackParamList = {
+  [HOME_SCREEN]: undefined;
+  [DETAILS_SCREEN]: { owner: string; repo: string; number: number };
+  [BOOKMARKS_SCREEN]: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const containerTheme = {
   ...DefaultTheme,
@@ -26,8 +36,8 @@ const Router = () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name={CurrentRoute.Home} component={Home} />
-          <Stack.Screen name={CurrentRoute.Details} component={Details} />
+          <Stack.Screen name={HOME_SCREEN} component={Home} />
+          <Stack.Screen name={DETAILS_SCREEN} component={Details} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

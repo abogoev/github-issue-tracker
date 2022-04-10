@@ -7,22 +7,15 @@ import theme from "../../theme/theme";
 import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
-import Bookmark from "../bookmark/Bookmark";
-import { Issue, IssueSearchParams } from "../../types";
+// import Bookmark from "../bookmark/Bookmark";
+import { Issue } from "../../types";
 
-interface Props
-  extends Omit<CustomTouchableOpacityProps, "children">,
-    IssueSearchParams,
-    Issue {}
-
-const IssueItem: VFC<Props> = ({
+const IssueItem: VFC<Omit<CustomTouchableOpacityProps, "children"> & Issue> = ({
   style,
   title,
   createdAt,
   closedAt,
   user,
-  owner,
-  repo,
   number,
   ...props
 }) => {
@@ -44,7 +37,7 @@ const IssueItem: VFC<Props> = ({
             user.login
           }`}</Text>
         </View>
-        <Bookmark owner={owner} repo={repo} number={number} />
+        {/* <Bookmark owner={owner} repo={repo} number={number} /> */}
       </View>
     </CustomTouchableOpacity>
   );

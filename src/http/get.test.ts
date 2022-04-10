@@ -1,5 +1,6 @@
 import axiosInstance from "./axiosInstance";
 import { fetchIssuesByOwnerAndRepo } from "./get";
+
 jest.mock("./axiosInstance.ts");
 const mockedAxios = axiosInstance as jest.Mocked<typeof axiosInstance>;
 

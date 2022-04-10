@@ -27,7 +27,7 @@ const palette = {
   neutral: "rgb(208, 215, 222)",
   darkGrey: "rgb(87, 96, 106)",
   veryDarkGrey: "#24292f",
-};
+} as const;
 
 const theme: Theme = {
   palette,

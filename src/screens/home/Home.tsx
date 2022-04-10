@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, VFC } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../../core/button/CustomButton";
 import CustomContainer from "../../core/container/CustomContainer";
 import CustomBox from "../../core/form/CustomBox";
 import CustomTextInput from "../../core/textinput/CustomTextInput";
-import { CurrentRoute, HomeNavigationProps, Issue } from "../../types";
 import Logo from "@assets/svg/logo.svg";
 import theme from "../../theme/theme";
 import IssueItem from "../../core/issueitem/IssueItem";
 import { fetchIssuesByOwnerAndRepo } from "../../http/get";
 import Pagination from "./pagination/Pagination";
+import CustomDropdown from "../../core/dropdown/CustomDropdown";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DETAILS_SCREEN, HOME_SCREEN } from "../../utils/constants";
+import { RootStackParamList } from "../../router/Router";
+import { Issue } from "../../types";
 
-interface Props extends HomeNavigationProps {
-  a: boolean;
-}
-
-const Home: React.FC<Props> = ({ navigation }) => {
+const Home: VFC<
+  NativeStackScreenProps<RootStackParamList, typeof HOME_SCREEN>
+> = ({ navigation }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState<number[]>([]);
   const [issues, setIssues] = useState<Issue[]>([]);
@@ -58,22 +60,29 @@ const Home: React.FC<Props> = ({ navigation }) => {
             textInputProps={{ accessibilityLabel: "Name of the repository" }}
             style={{ marginBottom: 16 }}
           />
+          <CustomDropdown
+            data={["one", "two"]}
+            onSelect={(selectedItem) => console.log(selectedItem)}
+            buttonTextAfterSelection={(selectedItem) => selectedItem}
+            rowTextForSelection={(item) => item}
+          />
           <CustomButton title="Search" />
         </CustomBox>
-        {/* <IssueItem
+        <IssueItem
           title="Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id "
           number={5}
+          body="asd"
           createdAt={new Date()}
           closedAt={null}
           user={{ login: "vanko", avatar_url: "" }}
           onPress={() =>
-            navigation.navigate(CurrentRoute.Details, {
+            navigation.navigate(DETAILS_SCREEN, {
               owner: "asd",
               repo: "aaa",
               number: 1,
             })
           }
-        /> */}
+        />
         <Pagination
           numbers={[1, 2, 3, 4, 5]}
           activeNumber={activeNumber}
