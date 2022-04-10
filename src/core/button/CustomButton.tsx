@@ -1,11 +1,12 @@
 import React, { VFC } from "react";
 import { StyleSheet, Text } from "react-native";
 import theme from "../../theme/theme";
+import { WithoutChildren } from "../../types";
 import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
 
-interface Props extends Omit<CustomTouchableOpacityProps, "children"> {
+interface Props extends WithoutChildren<CustomTouchableOpacityProps> {
   title: string;
 }
 

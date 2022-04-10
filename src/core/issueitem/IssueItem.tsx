@@ -8,9 +8,9 @@ import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
 // import Bookmark from "../bookmark/Bookmark";
-import { Issue } from "../../types";
+import { Issue, WithoutChildren } from "../../types";
 
-const IssueItem: VFC<Omit<CustomTouchableOpacityProps, "children"> & Issue> = ({
+const IssueItem: VFC<WithoutChildren<CustomTouchableOpacityProps> & Issue> = ({
   style,
   title,
   createdAt,

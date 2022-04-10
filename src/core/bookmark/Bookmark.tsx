@@ -4,14 +4,12 @@ import CustomTouchableOpacity, {
 } from "../touchableopacity/CustomTouchableOpacity";
 import BookIcon from "../../../assets/svg/book.svg";
 import BookYellowIcon from "../../../assets/svg/book-yellow.svg";
-import { IssueSearchParams } from "../../types";
 import { issueSearchParamsExistInStorage } from "./bookmarkHelper";
+import { IssueSearchParams, WithoutChildren } from "../../types";
 
-interface Props
-  extends Omit<CustomTouchableOpacityProps, "children">,
-    IssueSearchParams {}
-
-const Bookmark: VFC<Props> = ({ owner, repo, number, ...props }) => {
+const Bookmark: VFC<
+  WithoutChildren<CustomTouchableOpacityProps> & IssueSearchParams
+> = ({ owner, repo, number, ...props }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {

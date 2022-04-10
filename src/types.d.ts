@@ -15,3 +15,5 @@ export interface IssueSearchParams {
   repo: string;
   number: number;
 }
+
+export type WithoutChildren<T> = Omit<T, "children">;

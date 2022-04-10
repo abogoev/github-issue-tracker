@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, VFC } from "react";
 import {
   ScrollView,
   View,
@@ -9,25 +9,26 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import Comment from "./infobox/Comment";
 import theme from "../../theme/theme";
-import { DetailsNavigationProps } from "../../types";
-import { VFC } from "react";
 import OpenClosedBadge from "./badge/OpenClosedBadge";
 import BackIcon from "../../../assets/svg/back.svg";
 import { fetchIssuesByOwnerAndRepo } from "../../http/get";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../router/Router";
+import { DETAILS_SCREEN } from "../../utils/constants";
 
-interface Props extends DetailsNavigationProps {
+interface Props
+  extends NativeStackScreenProps<RootStackParamList, typeof DETAILS_SCREEN> {
   a: boolean;
 }
 
 const Details: VFC<Props> = ({ route, navigation }) => {
-  // console.log(route.params);
   const { number, owner, repo } = route.params;
   const [issue, setIssue] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        await fetchIssuesByOwnerAndRepo("octocat", "hello-world");
+        await fetchIssuesByOwnerAndRepo("octocat", "hello-world", 1);
       } catch (error) {
         console.log(error);
       }

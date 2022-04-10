@@ -1,21 +1,19 @@
 import React, { useCallback, useEffect, useState, VFC } from "react";
 import { ListRenderItem, StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  BookmarksNavigationProps,
-  CurrentRoute,
-  Issue,
-  IssueSearchParams,
-} from "../../types";
 import { getIssue } from "../../http/get";
 import { getAllIssueSearchParamsFromStorage } from "../../utils/utils";
 import IssueItem from "../../core/issueitem/IssueItem";
-
-interface Props extends BookmarksNavigationProps {}
+import { BOOKMARKS_SCREEN, DETAILS_SCREEN } from "../../utils/constants";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../router/Router";
+import { Issue, IssueSearchParams } from "../../types";
 
 type IssueIntersept = Issue & IssueSearchParams;
 
-const Bookmarks: VFC<Props> = ({ navigation }) => {
+const Bookmarks: VFC<
+  NativeStackScreenProps<RootStackParamList, typeof BOOKMARKS_SCREEN>
+> = ({ navigation }) => {
   const [bookmarkedIssues, setBookmarkedIssues] = useState<IssueIntersept[]>(
     []
   );
@@ -39,12 +37,12 @@ const Bookmarks: VFC<Props> = ({ navigation }) => {
     ({ item }) => (
       <IssueItem
         title={item.title}
-        issueNumber={item.number}
+        number={item.number}
         createdAt={item.createdAt}
         closedAt={item.closedAt}
-        username={item.user.login}
+        user={item.user.login}
         onPress={() =>
-          navigation.navigate(CurrentRoute.Details, {
+          navigation.navigate(DETAILS_SCREEN, {
             owner: item.owner,
             repo: item.repo,
             number: item.number,
