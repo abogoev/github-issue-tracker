@@ -1,9 +1,12 @@
+import { IssueSearchParams } from "../types";
 import {
   getAllIssueSearchParamsFromStorage,
   setIssueSearchParamsInStorage,
 } from "./utils";
 
-const issueSearchParams = [{ owner: "vanko", repo: "rep", number: 1 }];
+const issueSearchParams: IssueSearchParams[] = [
+  { owner: "vanko", repo: "rep", number: 1 },
+];
 
 describe("getAllIssueSearchParamsFromStorage and setIssueSearchParamsInStorage", () => {
   it("should work correctly", async () => {

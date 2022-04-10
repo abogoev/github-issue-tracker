@@ -1,4 +1,4 @@
-export type Issue = {
+export interface Issue {
   number: number;
   title: string;
   user: {
@@ -8,4 +8,10 @@ export type Issue = {
   body: string;
   createdAt: Date;
   closedAt: Date | null;
-};
+}
+
+export interface IssueSearchParams {
+  owner: string;
+  repo: string;
+  number: number;
+}
