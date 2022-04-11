@@ -1,11 +1,11 @@
-import { Issue } from "../types";
+import { Issue, FetchIssueSearchParams, GetIssueSearchParams } from "../types";
 import axiosInstance from "./axiosInstance";
 
-export const fetchIssuesByOwnerAndRepo = async (
-  owner: string,
-  repo: string,
-  page: number
-) => {
+export const fetchIssuesByOwnerAndRepo = async ({
+  owner,
+  repo,
+  page,
+}: FetchIssueSearchParams) => {
   const res = await axiosInstance.get<Issue[]>(
     `/repos/${owner}/${repo}/issues`,
     { params: { per_page: 50, page } }
@@ -13,7 +13,11 @@ export const fetchIssuesByOwnerAndRepo = async (
   return res.data;
 };
 
-export const getIssue = async (owner: string, repo: string, number: number) => {
+export const getIssue = async ({
+  owner,
+  repo,
+  number,
+}: GetIssueSearchParams) => {
   const res = await axiosInstance.get<Issue>(
     `/repos/${owner}/${repo}/issues/${number}`
   );

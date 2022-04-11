@@ -8,9 +8,17 @@ import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
 // import Bookmark from "../bookmark/Bookmark";
-import { Issue, WithoutChildren } from "../../types";
+import { WithoutChildren } from "../../types";
 
-const IssueItem: VFC<WithoutChildren<CustomTouchableOpacityProps> & Issue> = ({
+interface Props extends WithoutChildren<CustomTouchableOpacityProps> {
+  title: string;
+  createdAt: Date;
+  closedAt: Date | null;
+  user: string;
+  number: number;
+}
+
+const IssueItem: VFC<Props> = ({
   style,
   title,
   createdAt,
@@ -33,9 +41,7 @@ const IssueItem: VFC<WithoutChildren<CustomTouchableOpacityProps> & Issue> = ({
           </Text>
           <Text
             style={styles.description}
-          >{`#${number} opened on ${createdAt.toLocaleString()} by ${
-            user.login
-          }`}</Text>
+          >{`#${number} opened on ${createdAt.toLocaleString()} by ${user}`}</Text>
         </View>
         {/* <Bookmark owner={owner} repo={repo} number={number} /> */}
       </View>

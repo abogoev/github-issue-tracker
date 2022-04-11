@@ -5,10 +5,10 @@ import CustomTouchableOpacity, {
 import BookIcon from "../../../assets/svg/book.svg";
 import BookYellowIcon from "../../../assets/svg/book-yellow.svg";
 import { issueSearchParamsExistInStorage } from "./bookmarkHelper";
-import { IssueSearchParams, WithoutChildren } from "../../types";
+import { GetIssueSearchParams, WithoutChildren } from "../../types";
 
 const Bookmark: VFC<
-  WithoutChildren<CustomTouchableOpacityProps> & IssueSearchParams
+  WithoutChildren<CustomTouchableOpacityProps> & GetIssueSearchParams
 > = ({ owner, repo, number, ...props }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 

@@ -1,10 +1,10 @@
-import { IssueSearchParams } from "../types";
+import { GetIssueSearchParams } from "../types";
 import {
   getAllIssueSearchParamsFromStorage,
   setIssueSearchParamsInStorage,
 } from "./utils";
 
-const issueSearchParams: IssueSearchParams[] = [
+const issueSearchParams: GetIssueSearchParams[] = [
   { owner: "vanko", repo: "rep", number: 1 },
 ];
 

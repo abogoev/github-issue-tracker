@@ -1,11 +1,11 @@
-import { IssueSearchParams } from "../../types";
+import { GetIssueSearchParams } from "../../types";
 import {
   getAllIssueSearchParamsFromStorage,
   setIssueSearchParamsInStorage,
 } from "../../utils/utils";
 
 export const issueSearchParamsExistInStorage = async (
-  { owner, repo, number }: IssueSearchParams,
+  { owner, repo, number }: GetIssueSearchParams,
   addIfMissing?: boolean
 ) => {
   let exists = false;

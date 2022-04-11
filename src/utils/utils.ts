@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { IssueSearchParams } from "../types";
+import { GetIssueSearchParams } from "../types";
 import { ISSUE_SEARCH_PARAMS } from "./constants";
 
 afterEach(() => {
@@ -8,7 +8,7 @@ afterEach(() => {
 
 export const getAllIssueSearchParamsFromStorage = async () => {
   const issueSearchParamsJSON = await AsyncStorage.getItem(ISSUE_SEARCH_PARAMS);
-  let issueSearchParams: IssueSearchParams[] = [];
+  let issueSearchParams: GetIssueSearchParams[] = [];
   if (issueSearchParamsJSON) {
     issueSearchParams = JSON.parse(issueSearchParamsJSON);
   }
@@ -17,7 +17,7 @@ export const getAllIssueSearchParamsFromStorage = async () => {
 };
 
 export const setIssueSearchParamsInStorage = async (
-  issueSearchParams: IssueSearchParams[]
+  issueSearchParams: GetIssueSearchParams[]
 ) => {
   await AsyncStorage.setItem(
     ISSUE_SEARCH_PARAMS,

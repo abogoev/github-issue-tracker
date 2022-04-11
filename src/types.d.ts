@@ -10,10 +10,16 @@ export interface Issue {
   closedAt: Date | null;
 }
 
-export interface IssueSearchParams {
+export interface GetIssueSearchParams {
   owner: string;
   repo: string;
   number: number;
+}
+
+export interface FetchIssueSearchParams {
+  owner: string;
+  repo: string;
+  page: number;
 }
 
 export type WithoutChildren<T> = Omit<T, "children">;

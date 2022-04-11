@@ -7,9 +7,9 @@ import IssueItem from "../../core/issueitem/IssueItem";
 import { BOOKMARKS_SCREEN, DETAILS_SCREEN } from "../../utils/constants";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../router/Router";
-import { Issue, IssueSearchParams } from "../../types";
+import { Issue, GetIssueSearchParams } from "../../types";
 
-type IssueIntersept = Issue & IssueSearchParams;
+type IssueIntersept = Issue & GetIssueSearchParams;
 
 const Bookmarks: VFC<
   NativeStackScreenProps<RootStackParamList, typeof BOOKMARKS_SCREEN>
@@ -24,7 +24,7 @@ const Bookmarks: VFC<
         const issueSearchParams = await getAllIssueSearchParamsFromStorage();
 
         issueSearchParams.forEach(async (isp) => {
-          const currentIssue = await getIssue(isp.owner, isp.repo, isp.number);
+          const currentIssue = await getIssue(isp);
           setBookmarkedIssues((prev) => [...prev, { ...currentIssue, ...isp }]);
         });
       } catch (error) {
@@ -39,7 +39,7 @@ const Bookmarks: VFC<
         title={item.title}
         number={item.number}
         createdAt={item.createdAt}
-        closedAt={item.closedAt}
+        closedAt={item.closedAt && new Date(item.closedAt)}
         user={item.user.login}
         onPress={() =>
           navigation.navigate(DETAILS_SCREEN, {
