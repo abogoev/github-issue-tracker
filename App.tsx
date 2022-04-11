@@ -1,7 +1,7 @@
 import React from "react";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
-import MainApp from "./src/main/MainApp";
+import Router from "./src/router/Router";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -13,7 +13,7 @@ const App = () => {
     return <AppLoading />;
   }
 
-  return <MainApp />;
+  return <Router />;
 };
 
 export default App;
