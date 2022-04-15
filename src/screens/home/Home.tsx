@@ -1,95 +1,100 @@
 import React, { useState, VFC } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomButton from "../../core/button/CustomButton";
 import CustomContainer from "../../core/container/CustomContainer";
-import CustomBox from "../../core/form/CustomBox";
-import CustomTextInput from "../../core/textinput/CustomTextInput";
 import Logo from "@assets/svg/logo.svg";
 import theme from "../../theme/theme";
-import IssueItem from "../../core/issueitem/IssueItem";
 import { fetchIssuesByOwnerAndRepo } from "../../http/get";
 import Pagination from "./pagination/Pagination";
-import CustomDropdown from "../../core/dropdown/CustomDropdown";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { DETAILS_SCREEN, HOME_SCREEN } from "../../utils/constants";
+import { HOME_SCREEN } from "../../utils/constants";
 import { RootStackParamList } from "../../router/Router";
-import { Issue } from "../../types";
+import { FetchIssueSearchParams, IssueIntercept } from "../../types";
+import IssueList from "./issuelist/IssueList";
+import CustomForm from "./form/CustomForm";
+import { extractSubpages, getPieceFromArray } from "./homeHelper";
+
+const BATCH = 10;
 
 const Home: VFC<
   NativeStackScreenProps<RootStackParamList, typeof HOME_SCREEN>
-> = ({ navigation }) => {
+> = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pages, setPages] = useState<number[]>([]);
-  const [issues, setIssues] = useState<Issue[]>([]);
+  const [issues, setIssues] = useState<IssueIntercept[]>([]);
+  const [index, setIndex] = useState(0);
+  const [numbers, setNumbers] = useState<number[]>([]);
   const [activeNumber, setActiveNumber] = useState(0);
+  const [searchParams, setSearchParams] =
+    useState<Omit<FetchIssueSearchParams, "page">>();
 
-  const handleSearch = async (owner: string, repo: string) => {
+  const search = async ({
+    owner,
+    repo,
+    state,
+  }: Omit<FetchIssueSearchParams, "page">) => {
     try {
-      const currentIssues = await fetchIssuesByOwnerAndRepo(owner, repo, 1);
-      setIssues(currentIssues);
-      const innerPages = Math.ceil(issues.length / 10);
-      const nums = Array.from(
-        { length: innerPages },
-        (_, i) => i + 1 + innerPages * (currentPage - 1)
-      );
-      setPages(nums);
-      setCurrentPage((prev) => prev + 1);
+      setSearchParams({ owner, repo, state });
+
+      const currentIssues = await fetchIssuesByOwnerAndRepo({
+        owner,
+        repo,
+        state,
+        page: 1,
+      });
+
+      setIssues(currentIssues.map((c) => ({ ...c, owner, repo, state })));
+      setCurrentPage(2);
+      const nums = extractSubpages(currentIssues.length, BATCH, 1);
+      setNumbers(nums);
+      setIndex(0);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handlePrev = () => {};
+  const prevOrNext = async (isNext: boolean) => {
+    try {
+      const { owner, repo, state } = searchParams as Omit<
+        FetchIssueSearchParams,
+        "page"
+      >;
+
+      const currentIssues = await fetchIssuesByOwnerAndRepo({
+        owner,
+        repo,
+        state,
+        page: currentPage,
+      });
+
+      setIssues(currentIssues.map((c) => ({ ...c, owner, repo, state })));
+      const nums = extractSubpages(currentIssues.length, BATCH, currentPage);
+      setNumbers(nums);
+      setIndex(0);
+      setCurrentPage((prev) => (isNext ? prev + 1 : prev - 1));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <CustomContainer style={{ paddingTop: "10%" }}>
         <Logo style={styles.logo} />
         <Text style={styles.title}>Github Issue Tracker</Text>
-        <CustomBox>
-          <CustomTextInput
-            label="Owner"
-            textInputProps={{
-              accessibilityLabel: "Owner of the repository",
+        <CustomForm onSubmit={search} />
+        <IssueList issues={getPieceFromArray(issues, index, BATCH)} />
+        {numbers.length > 0 && (
+          <Pagination
+            numbers={numbers}
+            activeNumber={activeNumber}
+            onPrev={() => prevOrNext(false)}
+            onNext={() => prevOrNext(true)}
+            onChangeActiveNumber={(n, i) => {
+              setActiveNumber(n);
+              setIndex(i);
             }}
-            style={{ marginBottom: 16 }}
           />
-          <CustomTextInput
-            label="Repository name"
-            textInputProps={{ accessibilityLabel: "Name of the repository" }}
-            style={{ marginBottom: 16 }}
-          />
-          <CustomDropdown
-            data={["one", "two"]}
-            onSelect={(selectedItem) => console.log(selectedItem)}
-            buttonTextAfterSelection={(selectedItem) => selectedItem}
-            rowTextForSelection={(item) => item}
-          />
-          <CustomButton title="Search" />
-        </CustomBox>
-        <IssueItem
-          title="Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id "
-          number={5}
-          body="asd"
-          createdAt={new Date()}
-          closedAt={null}
-          user={{ login: "vanko", avatar_url: "" }}
-          onPress={() =>
-            navigation.navigate(DETAILS_SCREEN, {
-              owner: "asd",
-              repo: "aaa",
-              number: 1,
-            })
-          }
-        />
-        <Pagination
-          numbers={[1, 2, 3, 4, 5]}
-          activeNumber={activeNumber}
-          onPrev={handlePrev}
-          onNext={() => {}}
-          onChangeActiveNumber={setActiveNumber}
-        />
+        )}
       </CustomContainer>
     </SafeAreaView>
   );

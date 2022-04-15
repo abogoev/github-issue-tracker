@@ -39,8 +39,11 @@ const CustomTextInput: FC<Props> = ({
           style={styles(isFocused).input}
           selectionColor={theme.palette.veryDarkGrey}
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           {...textInputProps}
+          onBlur={(e) => {
+            setIsFocused(false);
+            textInputProps?.onBlur?.(e);
+          }}
         />
       </View>
       <Text style={styles().error}>{error}</Text>
@@ -64,12 +67,13 @@ const styles = (isFocused?: boolean) =>
     },
     input: {
       ...theme.typography.regularText,
+      lineHeight: 17,
       color: theme.palette.veryDarkGrey,
       borderRadius: theme.borderRadius,
       borderColor: isFocused ? theme.palette.blue : theme.palette.neutral,
       borderWidth: 1,
       paddingHorizontal: 12,
-      paddingVertical: 5,
+      paddingVertical: 7,
       backgroundColor: theme.palette.white,
     },
     error: {

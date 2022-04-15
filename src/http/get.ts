@@ -4,11 +4,12 @@ import axiosInstance from "./axiosInstance";
 export const fetchIssuesByOwnerAndRepo = async ({
   owner,
   repo,
+  state,
   page,
 }: FetchIssueSearchParams) => {
   const res = await axiosInstance.get<Issue[]>(
     `/repos/${owner}/${repo}/issues`,
-    { params: { per_page: 50, page } }
+    { params: { state, per_page: 50, page } }
   );
   return res.data;
 };

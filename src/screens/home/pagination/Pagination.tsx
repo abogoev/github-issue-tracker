@@ -7,7 +7,7 @@ interface Props extends ViewProps {
   activeNumber: number;
   onNext: () => void;
   onPrev: () => void;
-  onChangeActiveNumber: (n: number) => void;
+  onChangeActiveNumber: (n: number, i: number) => void;
 }
 
 const Pagination: VFC<Props> = ({
@@ -27,7 +27,7 @@ const Pagination: VFC<Props> = ({
           key={i}
           text={n.toString()}
           isActive={n === activeNumber}
-          onPress={() => onChangeActiveNumber(n)}
+          onPress={() => onChangeActiveNumber(n, i)}
         />
       ))}
       <PageItem text="Next" onPress={onNext} />

@@ -6,9 +6,11 @@ export interface Issue {
     avatar_url: string;
   };
   body: string;
-  createdAt: Date;
-  closedAt: Date | null;
+  created_at: Date;
+  closed_at: Date | null;
 }
+
+export type IssueIntercept = Issue & GetIssueSearchParams;
 
 export interface GetIssueSearchParams {
   owner: string;
@@ -19,7 +21,8 @@ export interface GetIssueSearchParams {
 export interface FetchIssueSearchParams {
   owner: string;
   repo: string;
-  page: number;
+  state: "open" | "closed" | "all";
+  page?: number;
 }
 
 export type WithoutChildren<T> = Omit<T, "children">;
