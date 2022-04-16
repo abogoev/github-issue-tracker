@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.15.0",
@@ -69,6 +70,13 @@
     ],
     "transform": {
       "^.+\\.svg$": "jest-svg-transformer"
-    }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "App.tsx"
+    ],
+    "coveragePathIgnorePatterns": [
+      "!*.d.ts"
+    ]
   }
 }

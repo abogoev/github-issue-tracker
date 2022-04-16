@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   back: {
     alignSelf: "flex-start",
     marginLeft: 14,
-    marginBottom: 16,
+    marginBottom: theme.spacing.medium,
   },
   container: {
     paddingHorizontal: 20,
@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
   title: {
     ...theme.typography.verylargeText,
     color: theme.palette.veryDarkGrey,
-    marginBottom: 16,
+    marginBottom: theme.spacing.medium,
   },
   hr: {
     height: 1,
     backgroundColor: theme.palette.neutral,
-    marginVertical: 16,
+    marginVertical: theme.spacing.medium,
   },
 });
 

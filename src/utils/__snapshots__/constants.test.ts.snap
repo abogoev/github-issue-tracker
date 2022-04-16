@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`constants should match snapshot 1`] = `
+Object {
+  "ACTIVE_OPACITY": 0.8,
+  "ALL": "all",
+  "BOOKMARKS_SCREEN": "Bookmarks",
+  "CLOSED": "closed",
+  "DETAILS_SCREEN": "Details",
+  "HOME_SCREEN": "Home",
+  "ISSUE_SEARCH_PARAMS": "issueSearchParams",
+  "OPEN": "open",
+  "OWNER": "owner",
+  "REPO": "repo",
+  "STATE": "state",
+}
+`;
