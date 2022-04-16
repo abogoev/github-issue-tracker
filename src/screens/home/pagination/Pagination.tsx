@@ -4,19 +4,19 @@ import PageItem from "./pagenumber/PageItem";
 
 interface Props extends ViewProps {
   numbers: number[];
-  activeNumber: number;
+  activeIndex: number;
   onNext: () => void;
   onPrev: () => void;
-  onChangeActiveNumber: (n: number, i: number) => void;
+  onChangeActiveNumber: (i: number) => void;
 }
 
 const Pagination: VFC<Props> = ({
   numbers,
-  activeNumber,
+  activeIndex,
   style,
   onNext,
   onPrev,
-  onChangeActiveNumber,
+  onChangeActiveNumber: onChangeActiveIndex,
   ...props
 }) => {
   return (
@@ -26,8 +26,8 @@ const Pagination: VFC<Props> = ({
         <PageItem
           key={i}
           text={n.toString()}
-          isActive={n === activeNumber}
-          onPress={() => onChangeActiveNumber(n, i)}
+          isActive={i === activeIndex}
+          onPress={() => onChangeActiveIndex(i)}
         />
       ))}
       <PageItem text="Next" onPress={onNext} />
@@ -38,6 +38,7 @@ const Pagination: VFC<Props> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    justifyContent: "center",
   },
 });
 

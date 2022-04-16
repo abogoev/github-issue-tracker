@@ -10,6 +10,7 @@ interface Theme {
     smallText: TextStyle;
   };
   borderRadius: 6;
+  spacing: typeof spacing;
 }
 
 const HELVETICA = "Helvetica";
@@ -27,6 +28,13 @@ const palette = {
   neutral: "rgb(208, 215, 222)",
   darkGrey: "rgb(87, 96, 106)",
   veryDarkGrey: "#24292f",
+} as const;
+
+const spacing = {
+  verySmall: 4,
+  small: 8,
+  medium: 16,
+  large: 24,
 } as const;
 
 const theme: Theme = {
@@ -63,6 +71,7 @@ const theme: Theme = {
     },
   },
   borderRadius: 6,
+  spacing,
 };
 
 export default theme;

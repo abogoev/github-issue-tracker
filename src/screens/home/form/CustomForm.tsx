@@ -9,7 +9,7 @@ import CustomDropdown from "../../../core/dropdown/CustomDropdown";
 import { FetchIssueSearchParams } from "../../../types";
 
 interface Props {
-  onSubmit: (values: Omit<FetchIssueSearchParams, "page">) => void;
+  onSubmit: (values: FetchIssueSearchParams) => void;
 }
 
 const CustomForm: VFC<Props> = ({ onSubmit }) => {
@@ -41,10 +41,13 @@ const CustomForm: VFC<Props> = ({ onSubmit }) => {
             style={styles.marginBottom}
           />
           <CustomDropdown
+            label="State"
             data={["open", "closed", "all"]}
             onSelect={handleChange(STATE)}
             buttonTextAfterSelection={(selectedItem) => selectedItem}
             rowTextForSelection={(item) => item}
+            defaultValue="open"
+            style={styles.marginBottom}
           />
           <CustomButton title="Search" onPress={handleSubmit as any} />
         </CustomBox>

@@ -9,3 +9,7 @@ export const STATE = "state";
 export const HOME_SCREEN = "Home";
 export const DETAILS_SCREEN = "Details";
 export const BOOKMARKS_SCREEN = "Bookmarks";
+
+export const OPEN = "open";
+export const CLOSED = "closed";
+export const ALL = "all";

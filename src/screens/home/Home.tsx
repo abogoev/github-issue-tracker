@@ -23,15 +23,9 @@ const Home: VFC<
   const [issues, setIssues] = useState<IssueIntercept[]>([]);
   const [index, setIndex] = useState(0);
   const [numbers, setNumbers] = useState<number[]>([]);
-  const [activeNumber, setActiveNumber] = useState(0);
-  const [searchParams, setSearchParams] =
-    useState<Omit<FetchIssueSearchParams, "page">>();
+  const [searchParams, setSearchParams] = useState<FetchIssueSearchParams>();
 
-  const search = async ({
-    owner,
-    repo,
-    state,
-  }: Omit<FetchIssueSearchParams, "page">) => {
+  const search = async ({ owner, repo, state }: FetchIssueSearchParams) => {
     try {
       setSearchParams({ owner, repo, state });
 
@@ -54,10 +48,7 @@ const Home: VFC<
 
   const prevOrNext = async (isNext: boolean) => {
     try {
-      const { owner, repo, state } = searchParams as Omit<
-        FetchIssueSearchParams,
-        "page"
-      >;
+      const { owner, repo, state } = searchParams as FetchIssueSearchParams;
 
       const currentIssues = await fetchIssuesByOwnerAndRepo({
         owner,
@@ -77,39 +68,50 @@ const Home: VFC<
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <CustomContainer style={{ paddingTop: "10%" }}>
-        <Logo style={styles.logo} />
-        <Text style={styles.title}>Github Issue Tracker</Text>
-        <CustomForm onSubmit={search} />
-        <IssueList issues={getPieceFromArray(issues, index, BATCH)} />
-        {numbers.length > 0 && (
-          <Pagination
-            numbers={numbers}
-            activeNumber={activeNumber}
-            onPrev={() => prevOrNext(false)}
-            onNext={() => prevOrNext(true)}
-            onChangeActiveNumber={(n, i) => {
-              setActiveNumber(n);
-              setIndex(i);
-            }}
-          />
-        )}
+    <SafeAreaView style={styles.container}>
+      <CustomContainer>
+        <IssueList
+          contentContainerStyle={{ paddingTop: "10%", paddingHorizontal: 20 }}
+          ListHeaderComponent={
+            <>
+              <Logo style={styles.logo} />
+              <Text style={styles.title}>Github Issue Tracker</Text>
+              <CustomForm onSubmit={search} />
+            </>
+          }
+          ListHeaderComponentStyle={{ marginBottom: theme.spacing.large }}
+          issues={getPieceFromArray(issues, index, BATCH)}
+          ListFooterComponent={
+            numbers.length > 0 ? (
+              <Pagination
+                numbers={numbers}
+                activeIndex={index}
+                onPrev={() => prevOrNext(false)}
+                onNext={() => prevOrNext(true)}
+                onChangeActiveNumber={setIndex}
+              />
+            ) : null
+          }
+          ListFooterComponentStyle={{ marginTop: theme.spacing.large }}
+        />
       </CustomContainer>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   logo: {
     alignSelf: "center",
-    marginBottom: 24,
+    marginBottom: theme.spacing.large,
   },
   title: {
     ...theme.typography.verylargeText,
     color: theme.palette.veryDarkGrey,
     alignSelf: "center",
-    marginBottom: 16,
+    marginBottom: theme.spacing.medium,
   },
 });
 

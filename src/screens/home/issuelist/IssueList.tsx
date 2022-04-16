@@ -1,13 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useCallback, VFC } from "react";
-import { FlatList, ListRenderItem, StyleSheet, ViewStyle } from "react-native";
+import {
+  FlatList,
+  FlatListProps,
+  ListRenderItem,
+  ViewStyle,
+} from "react-native";
 import IssueItem from "../../../core/issueitem/IssueItem";
 import { RootStackParamList } from "../../../router/Router";
 import { IssueIntercept } from "../../../types";
 import { DETAILS_SCREEN } from "../../../utils/constants";
 
-interface Props {
+interface Props
+  extends Omit<FlatListProps<IssueIntercept>, "data" | "renderItem"> {
   style?: ViewStyle;
   issues: IssueIntercept[];
 }
@@ -21,7 +27,7 @@ const IssueList: VFC<Props> = ({ issues, style, ...props }) => {
       <IssueItem
         title={item.title}
         number={item.number}
-        createdAt={item.created_at}
+        createdAt={new Date(item.created_at)}
         closedAt={item.closed_at && new Date(item.closed_at)}
         user={item.user.login}
         onPress={() =>
@@ -48,5 +54,3 @@ const IssueList: VFC<Props> = ({ issues, style, ...props }) => {
 };
 
 export default IssueList;
-
-const styles = StyleSheet.create({});

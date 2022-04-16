@@ -36,10 +36,11 @@ const IssueItem: VFC<Props> = ({
           <OpenIssueIcon style={styles.icon} />
         )}
         <View style={styles.textContainer}>
-          <Text style={styles.title} numberOfLines={2}>
+          <Text style={styles.title} numberOfLines={1}>
             {title}
           </Text>
           <Text
+            numberOfLines={1}
             style={styles.description}
           >{`#${number} opened on ${createdAt.toLocaleString()} by ${user}`}</Text>
         </View>

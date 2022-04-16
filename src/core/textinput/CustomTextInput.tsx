@@ -46,7 +46,7 @@ const CustomTextInput: FC<Props> = ({
           }}
         />
       </View>
-      <Text style={styles().error}>{error}</Text>
+      {!!error && <Text style={styles().error}>{error}</Text>}
     </View>
   );
 };
