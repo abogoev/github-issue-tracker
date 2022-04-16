@@ -8,9 +8,10 @@ import theme from "../../theme/theme";
 interface Props extends SelectDropdownProps {
   style?: ViewStyle;
   label: string;
+  error?: string | boolean;
 }
 
-const CustomDropdown: VFC<Props> = ({ style, label, ...props }) => {
+const CustomDropdown: VFC<Props> = ({ style, label, error, ...props }) => {
   const ref = useRef<SelectDropdown>(null);
 
   return (
@@ -27,6 +28,7 @@ const CustomDropdown: VFC<Props> = ({ style, label, ...props }) => {
         dropdownOverlayColor={theme.palette.transparent}
         {...props}
       />
+      {!!error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 };
@@ -63,6 +65,10 @@ const styles = StyleSheet.create({
     color: theme.palette.veryDarkGrey,
     textAlign: "left",
     marginHorizontal: 12,
+  },
+  error: {
+    ...theme.typography.smallText,
+    color: theme.palette.red,
   },
 });
 

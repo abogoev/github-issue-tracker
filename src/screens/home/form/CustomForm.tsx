@@ -4,9 +4,18 @@ import CustomBox from "../../../core/form/CustomBox";
 import CustomTextInput from "../../../core/textinput/CustomTextInput";
 import CustomButton from "../../../core/button/CustomButton";
 import { Formik } from "formik";
-import { OWNER, REPO, STATE } from "../../../utils/constants";
+import {
+  ALL,
+  CLOSED,
+  OPEN,
+  OWNER,
+  REPO,
+  STATE,
+} from "../../../utils/constants";
 import CustomDropdown from "../../../core/dropdown/CustomDropdown";
 import { FetchIssueSearchParams } from "../../../types";
+import { fetchIssuesValidationSchema } from "../../../utils/validationSchemas";
+import theme from "../../../theme/theme";
 
 interface Props {
   onSubmit: (values: FetchIssueSearchParams) => void;
@@ -15,10 +24,18 @@ interface Props {
 const CustomForm: VFC<Props> = ({ onSubmit }) => {
   return (
     <Formik
-      initialValues={{ [OWNER]: "", [REPO]: "", [STATE]: "open" }}
+      initialValues={{ [OWNER]: "", [REPO]: "", [STATE]: OPEN }}
+      validationSchema={fetchIssuesValidationSchema}
       onSubmit={onSubmit}
     >
-      {({ handleChange, handleBlur, handleSubmit, values }) => (
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        touched,
+        errors,
+      }) => (
         <CustomBox>
           <CustomTextInput
             label="Owner"
@@ -28,6 +45,7 @@ const CustomForm: VFC<Props> = ({ onSubmit }) => {
               onBlur: handleBlur(OWNER),
               value: values[OWNER],
             }}
+            error={touched[OWNER] && errors[OWNER]}
             style={styles.marginBottom}
           />
           <CustomTextInput
@@ -38,16 +56,18 @@ const CustomForm: VFC<Props> = ({ onSubmit }) => {
               onBlur: handleBlur(REPO),
               value: values[REPO],
             }}
+            error={touched[REPO] && errors[REPO]}
             style={styles.marginBottom}
           />
           <CustomDropdown
             label="State"
-            data={["open", "closed", "all"]}
+            data={[OPEN, CLOSED, ALL]}
             onSelect={handleChange(STATE)}
             buttonTextAfterSelection={(selectedItem) => selectedItem}
             rowTextForSelection={(item) => item}
-            defaultValue="open"
+            defaultValue={values[STATE]}
             style={styles.marginBottom}
+            error={errors[STATE]}
           />
           <CustomButton title="Search" onPress={handleSubmit as any} />
         </CustomBox>
@@ -58,7 +78,7 @@ const CustomForm: VFC<Props> = ({ onSubmit }) => {
 
 const styles = StyleSheet.create({
   marginBottom: {
-    marginBottom: 16,
+    marginBottom: theme.spacing.medium,
   },
 });
 

@@ -12,7 +12,7 @@ import theme from "../../theme/theme";
 interface Props extends ViewProps {
   label: string;
   textInputProps?: TextInputProps;
-  error?: string;
+  error?: string | boolean;
 }
 
 const CustomTextInput: FC<Props> = ({

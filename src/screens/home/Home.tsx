@@ -71,7 +71,7 @@ const Home: VFC<
     <SafeAreaView style={styles.container}>
       <CustomContainer>
         <IssueList
-          contentContainerStyle={{ paddingTop: "10%", paddingHorizontal: 20 }}
+          contentContainerStyle={styles.content}
           ListHeaderComponent={
             <>
               <Logo style={styles.logo} />
@@ -79,7 +79,7 @@ const Home: VFC<
               <CustomForm onSubmit={search} />
             </>
           }
-          ListHeaderComponentStyle={{ marginBottom: theme.spacing.large }}
+          ListHeaderComponentStyle={styles.header}
           issues={getPieceFromArray(issues, index, BATCH)}
           ListFooterComponent={
             numbers.length > 0 ? (
@@ -92,7 +92,7 @@ const Home: VFC<
               />
             ) : null
           }
-          ListFooterComponentStyle={{ marginTop: theme.spacing.large }}
+          ListFooterComponentStyle={styles.footer}
         />
       </CustomContainer>
     </SafeAreaView>
@@ -102,6 +102,16 @@ const Home: VFC<
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  content: {
+    paddingTop: "10%",
+    paddingHorizontal: 20,
+  },
+  header: {
+    marginBottom: theme.spacing.large,
+  },
+  footer: {
+    marginTop: theme.spacing.large,
   },
   logo: {
     alignSelf: "center",
