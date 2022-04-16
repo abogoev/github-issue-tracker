@@ -31,4 +31,19 @@ describe("CustomTextInput", () => {
     component.root.findByType(TextInput).props.onChangeText(input);
     expect(onChangeTextMock).toBeCalledWith(input);
   });
+
+  it("should call onBlur correctly", () => {
+    const onChangeTextMock = jest.fn();
+    const onBlurMock = jest.fn();
+    const component = create(
+      <CustomTextInput
+        label={label}
+        textInputProps={{ onChangeText: onChangeTextMock, onBlur: onBlurMock }}
+      />
+    );
+
+    expect(onBlurMock).not.toHaveBeenCalled();
+    console.log(component.root.findByType(TextInput).props.onBlur());
+    expect(onBlurMock).toHaveBeenCalledTimes(1);
+  });
 });
