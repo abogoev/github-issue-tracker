@@ -34,8 +34,6 @@ const Details: VFC<
     })();
   }, []);
 
-  console.log(issue);
-
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -53,7 +51,7 @@ const Details: VFC<
           <Comment
             body={issue.body}
             user={issue.user}
-            created_at={new Date(issue.created_at)}
+            createdAt={new Date(issue.created_at)}
           />
         </ScrollView>
       )}

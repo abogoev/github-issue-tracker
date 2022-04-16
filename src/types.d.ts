@@ -6,8 +6,8 @@ export interface Issue {
     avatar_url: string;
   };
   body: string;
-  created_at: Date;
-  closed_at: Date | null;
+  created_at: string;
+  closed_at: string | null;
 }
 
 export type IssueIntercept = Issue & GetIssueSearchParams;

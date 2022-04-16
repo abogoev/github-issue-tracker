@@ -8,7 +8,7 @@ describe("InfoBox", () => {
       <InfoBox
         body="Body"
         user={{ avatar_url: "", login: "username" }}
-        created_at={new Date("2000-01-01")}
+        createdAt={new Date("2000-01-01")}
       />
     );
 

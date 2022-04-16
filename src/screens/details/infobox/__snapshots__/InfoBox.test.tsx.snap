@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CustomBox should render correctly 1`] = `
+exports[`InfoBox should render correctly 1`] = `
 <View
   style={
     Array [

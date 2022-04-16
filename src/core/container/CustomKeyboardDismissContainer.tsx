@@ -11,7 +11,7 @@ interface Props extends PressableProps {
   style?: ViewStyle;
 }
 
-const CustomContainer: FC<Props> = ({ style, ...props }) => {
+const CustomKeyboardDismissContainer: FC<Props> = ({ style, ...props }) => {
   return (
     <Pressable
       style={[styles.container, style]}
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomContainer;
+export default CustomKeyboardDismissContainer;

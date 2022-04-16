@@ -3,9 +3,13 @@ import { StyleSheet, Text, View, Image, ViewProps } from "react-native";
 import theme from "../../../theme/theme";
 import { Issue, WithoutChildren } from "../../../types";
 
-const Comment: VFC<
-  WithoutChildren<ViewProps> & Pick<Issue, "body" | "user" | "created_at">
-> = ({ body, user, style, created_at, ...props }) => {
+interface Props
+  extends WithoutChildren<ViewProps>,
+    Pick<Issue, "body" | "user"> {
+  createdAt: Date;
+}
+
+const Comment: VFC<Props> = ({ body, user, style, createdAt, ...props }) => {
   return (
     <View style={[styles.container, style]} {...props}>
       <Image
@@ -16,7 +20,7 @@ const Comment: VFC<
       <View style={styles.messageContainer}>
         <View style={styles.topMessageContainer}>
           <Text>{user.login}</Text>
-          <Text>commented on {created_at.toLocaleString()}</Text>
+          <Text>commented on {createdAt.toLocaleString()}</Text>
         </View>
         <View style={styles.bottomMessageContainer}>
           <Text>{body}</Text>

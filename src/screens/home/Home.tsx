@@ -1,7 +1,7 @@
 import React, { useState, VFC } from "react";
 import { Text, StyleSheet, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomContainer from "../../core/container/CustomContainer";
+import CustomKeyboardDismissContainer from "../../core/container/CustomKeyboardDismissContainer";
 import Logo from "@assets/svg/logo.svg";
 import theme from "../../theme/theme";
 import { fetchIssuesByOwnerAndRepo } from "../../http/get";
@@ -76,7 +76,7 @@ const Home: VFC<
 
   return (
     <SafeAreaView style={styles.container}>
-      <CustomContainer>
+      <CustomKeyboardDismissContainer>
         <IssueList
           contentContainerStyle={styles.content}
           ListHeaderComponent={
@@ -107,7 +107,7 @@ const Home: VFC<
           }
           ListFooterComponentStyle={styles.marginTop}
         />
-      </CustomContainer>
+      </CustomKeyboardDismissContainer>
     </SafeAreaView>
   );
 };

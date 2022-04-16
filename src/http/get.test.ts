@@ -1,6 +1,6 @@
-import { Issue, FetchIssueSearchParams } from "../types";
+import { Issue, FetchIssueSearchParams, GetIssueSearchParams } from "../types";
 import axiosInstance from "./axiosInstance";
-import { fetchIssuesByOwnerAndRepo } from "./get";
+import { fetchIssuesByOwnerAndRepo, getIssue } from "./get";
 
 jest.mock("./axiosInstance.ts");
 
@@ -10,6 +10,7 @@ describe("fetchIssuesByOwnerAndRepo", () => {
   const issueSearchParams: FetchIssueSearchParams = {
     owner: "vanko",
     repo: "asd",
+    state: "all",
     page: 1,
   };
 
@@ -23,8 +24,8 @@ describe("fetchIssuesByOwnerAndRepo", () => {
           avatar_url: "",
         },
         body: "body",
-        createdAt: new Date("2012-04-23T18:25:43.511Z"),
-        closedAt: null,
+        created_at: "2012-04-23T18:25:43.511Z",
+        closed_at: null,
       },
     ];
     mockedAxios.get.mockResolvedValueOnce({ data });
@@ -34,7 +35,11 @@ describe("fetchIssuesByOwnerAndRepo", () => {
     expect(mockedAxios.get).toBeCalledWith(
       `/repos/${issueSearchParams.owner}/${issueSearchParams.repo}/issues`,
       {
-        params: { page: issueSearchParams.page, per_page: 50 },
+        params: {
+          page: issueSearchParams.page,
+          state: issueSearchParams.state,
+          per_page: 50,
+        },
       }
     );
 
@@ -47,6 +52,48 @@ describe("fetchIssuesByOwnerAndRepo", () => {
 
     try {
       await fetchIssuesByOwnerAndRepo(issueSearchParams);
+    } catch (error) {
+      expect(error).toBe(message);
+    }
+  });
+});
+
+describe("getIssue", () => {
+  const issueSearchParams: GetIssueSearchParams = {
+    owner: "vanko",
+    repo: "asd",
+    number: 123,
+  };
+
+  it("should return correct response", async () => {
+    const data: Issue = {
+      number: 123,
+      title: "title",
+      user: {
+        login: "login",
+        avatar_url: "",
+      },
+      body: "body",
+      created_at: "2012-04-23T18:25:43.511Z",
+      closed_at: null,
+    };
+    mockedAxios.get.mockResolvedValueOnce({ data });
+
+    const result = await getIssue(issueSearchParams);
+
+    expect(mockedAxios.get).toBeCalledWith(
+      `/repos/${issueSearchParams.owner}/${issueSearchParams.repo}/issues/${issueSearchParams.number}`
+    );
+
+    expect(result).toEqual(data);
+  });
+
+  it("should throw error", async () => {
+    const message = "something";
+    mockedAxios.get.mockRejectedValueOnce(message);
+
+    try {
+      await getIssue(issueSearchParams);
     } catch (error) {
       expect(error).toBe(message);
     }
