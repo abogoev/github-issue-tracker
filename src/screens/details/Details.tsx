@@ -11,10 +11,11 @@ import Comment from "./infobox/Comment";
 import theme from "../../theme/theme";
 import OpenClosedBadge from "./badge/OpenClosedBadge";
 import BackIcon from "../../../assets/svg/back.svg";
-import { fetchIssuesByOwnerAndRepo } from "../../http/get";
+import { getIssue } from "../../http/get";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../router/Router";
 import { DETAILS_SCREEN } from "../../utils/constants";
+import { Issue } from "../../types";
 
 interface Props
   extends NativeStackScreenProps<RootStackParamList, typeof DETAILS_SCREEN> {
@@ -22,21 +23,24 @@ interface Props
 }
 
 const Details: VFC<Props> = ({ route, navigation }) => {
-  const { number, owner, repo } = route.params;
-  const [issue, setIssue] = useState(null);
+  const { owner, repo, number } = route.params;
+  const [issue, setIssue] = useState<Issue>();
 
   useEffect(() => {
     (async () => {
       try {
-        await fetchIssuesByOwnerAndRepo("octocat", "hello-world", 1);
+        const currentIssue = await getIssue({ owner, repo, number });
+        setIssue(currentIssue);
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
 
+  console.log(issue);
+
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <TouchableOpacity
         accessibilityRole="button"
         onPress={() => navigation.goBack()}
@@ -44,12 +48,18 @@ const Details: VFC<Props> = ({ route, navigation }) => {
       >
         <BackIcon width={32} height={32} />
       </TouchableOpacity>
-      <ScrollView style={styles.container}>
-        <Text style={styles.title}>About</Text>
-        <OpenClosedBadge />
-        <View style={styles.hr} />
-        <Comment />
-      </ScrollView>
+      {issue && (
+        <ScrollView style={styles.container}>
+          <Text style={styles.title}>{issue.title}</Text>
+          <OpenClosedBadge isClosed={!!issue.closed_at} />
+          <View style={styles.hr} />
+          <Comment
+            body={issue.body}
+            user={issue.user}
+            createdAt={new Date(issue.created_at)}
+          />
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 };
