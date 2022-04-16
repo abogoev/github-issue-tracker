@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Comment from "./infobox/Comment";
+import Comment from "./infobox/InfoBox";
 import theme from "../../theme/theme";
 import OpenClosedBadge from "./badge/OpenClosedBadge";
 import BackIcon from "../../../assets/svg/back.svg";
@@ -17,12 +17,9 @@ import { RootStackParamList } from "../../router/Router";
 import { DETAILS_SCREEN } from "../../utils/constants";
 import { Issue } from "../../types";
 
-interface Props
-  extends NativeStackScreenProps<RootStackParamList, typeof DETAILS_SCREEN> {
-  a: boolean;
-}
-
-const Details: VFC<Props> = ({ route, navigation }) => {
+const Details: VFC<
+  NativeStackScreenProps<RootStackParamList, typeof DETAILS_SCREEN>
+> = ({ route, navigation }) => {
   const { owner, repo, number } = route.params;
   const [issue, setIssue] = useState<Issue>();
 
@@ -40,7 +37,7 @@ const Details: VFC<Props> = ({ route, navigation }) => {
   console.log(issue);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.container}>
       <TouchableOpacity
         accessibilityRole="button"
         onPress={() => navigation.goBack()}
@@ -49,14 +46,14 @@ const Details: VFC<Props> = ({ route, navigation }) => {
         <BackIcon width={32} height={32} />
       </TouchableOpacity>
       {issue && (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{issue.title}</Text>
           <OpenClosedBadge isClosed={!!issue.closed_at} />
           <View style={styles.hr} />
           <Comment
             body={issue.body}
             user={issue.user}
-            createdAt={new Date(issue.created_at)}
+            created_at={new Date(issue.created_at)}
           />
         </ScrollView>
       )}
@@ -65,12 +62,15 @@ const Details: VFC<Props> = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   back: {
     alignSelf: "flex-start",
     marginLeft: 14,
     marginBottom: theme.spacing.medium,
   },
-  container: {
+  scroll: {
     paddingHorizontal: 20,
   },
   title: {

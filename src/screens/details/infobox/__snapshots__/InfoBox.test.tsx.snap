@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomBox should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    accessibilityIgnoresInvertColors={true}
+    source={
+      Object {
+        "uri": "",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 20,
+        "height": 40,
+        "marginRight": 16,
+        "width": 40,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "borderColor": "rgb(208, 215, 222)",
+        "borderRadius": 6,
+        "borderWidth": 1,
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "rgb(246, 248, 250)",
+          "borderBottomWidth": 1,
+          "borderColor": "rgb(208, 215, 222)",
+          "borderTopLeftRadius": 6,
+          "borderTopRightRadius": 6,
+          "minHeight": 39,
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        }
+      }
+    >
+      <Text>
+        username
+      </Text>
+      <Text>
+        commented on 
+        01/01/2000, 02:00:00
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "minHeight": 53,
+          "padding": 16,
+        }
+      }
+    >
+      <Text>
+        Body
+      </Text>
+    </View>
+  </View>
+</View>
+`;
