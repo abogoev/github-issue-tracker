@@ -1,5 +1,5 @@
 import React, { useState, VFC } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomContainer from "../../core/container/CustomContainer";
 import Logo from "@assets/svg/logo.svg";
@@ -24,9 +24,11 @@ const Home: VFC<
   const [index, setIndex] = useState(0);
   const [numbers, setNumbers] = useState<number[]>([]);
   const [searchParams, setSearchParams] = useState<FetchIssueSearchParams>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const search = async ({ owner, repo, state }: FetchIssueSearchParams) => {
     try {
+      setIsLoading(true);
       setSearchParams({ owner, repo, state });
 
       const currentIssues = await fetchIssuesByOwnerAndRepo({
@@ -43,11 +45,14 @@ const Home: VFC<
       setIndex(0);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const prevOrNext = async (isNext: boolean) => {
     try {
+      setIsLoading(true);
       const { owner, repo, state } = searchParams as FetchIssueSearchParams;
 
       const currentIssues = await fetchIssuesByOwnerAndRepo({
@@ -64,6 +69,8 @@ const Home: VFC<
       setCurrentPage((prev) => (isNext ? prev + 1 : prev - 1));
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -77,10 +84,16 @@ const Home: VFC<
               <Logo style={styles.logo} />
               <Text style={styles.title}>Github Issue Tracker</Text>
               <CustomForm onSubmit={search} />
+              {isLoading && (
+                <ActivityIndicator
+                  style={styles.marginTop}
+                  color={theme.palette.darkBlue}
+                />
+              )}
             </>
           }
           ListHeaderComponentStyle={styles.header}
-          issues={getPieceFromArray(issues, index, BATCH)}
+          data={getPieceFromArray(issues, index, BATCH)}
           ListFooterComponent={
             numbers.length > 0 ? (
               <Pagination
@@ -92,7 +105,7 @@ const Home: VFC<
               />
             ) : null
           }
-          ListFooterComponentStyle={styles.footer}
+          ListFooterComponentStyle={styles.marginTop}
         />
       </CustomContainer>
     </SafeAreaView>
@@ -110,7 +123,7 @@ const styles = StyleSheet.create({
   header: {
     marginBottom: theme.spacing.large,
   },
-  footer: {
+  marginTop: {
     marginTop: theme.spacing.large,
   },
   logo: {

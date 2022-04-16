@@ -12,13 +12,11 @@ import { RootStackParamList } from "../../../router/Router";
 import { IssueIntercept } from "../../../types";
 import { DETAILS_SCREEN } from "../../../utils/constants";
 
-interface Props
-  extends Omit<FlatListProps<IssueIntercept>, "data" | "renderItem"> {
+interface Props extends Omit<FlatListProps<IssueIntercept>, "renderItem"> {
   style?: ViewStyle;
-  issues: IssueIntercept[];
 }
 
-const IssueList: VFC<Props> = ({ issues, style, ...props }) => {
+const IssueList: VFC<Props> = ({ style, ...props }) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -45,7 +43,6 @@ const IssueList: VFC<Props> = ({ issues, style, ...props }) => {
 
   return (
     <FlatList
-      data={issues}
       renderItem={renderItem}
       keyExtractor={(item, index) => index.toString()}
       {...props}
