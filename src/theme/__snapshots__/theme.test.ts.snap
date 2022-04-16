@@ -12,9 +12,16 @@ Object {
     "lightGrey": "rgb(246, 248, 250)",
     "neutral": "rgb(208, 215, 222)",
     "purple": "rgb(130, 80, 223)",
+    "red": "rgb(207, 34, 46)",
     "transparent": "transparent",
     "veryDarkGrey": "#24292f",
     "white": "#fff",
+  },
+  "spacing": Object {
+    "large": 24,
+    "medium": 16,
+    "small": 8,
+    "verySmall": 4,
   },
   "typography": Object {
     "largeText": Object {

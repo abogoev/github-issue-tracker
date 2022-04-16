@@ -1,15 +1,15 @@
 import React from "react";
 import * as RN from "react-native";
-import CustomBox from "./CustomBox";
+import CustomKeyboardDismissContainer from "./CustomKeyboardDismissContainer";
 import { create } from "react-test-renderer";
 
 describe("CustomBox", () => {
   it("should render correctly", () => {
     const randomText = "Hello";
     const component = create(
-      <CustomBox>
+      <CustomKeyboardDismissContainer>
         <RN.Text>{randomText}</RN.Text>
-      </CustomBox>
+      </CustomKeyboardDismissContainer>
     );
 
     expect(component.root.findByType(RN.Text).props.children).toBe(randomText);

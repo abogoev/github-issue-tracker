@@ -45,7 +45,7 @@ exports[`OpenClosedBadge should render correctly 1`] = `
       }
     >
       <Text
-        numberOfLines={2}
+        numberOfLines={1}
         style={
           Object {
             "color": "#24292f",
@@ -59,6 +59,7 @@ exports[`OpenClosedBadge should render correctly 1`] = `
         Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui corrupti dolorem est eius cum tempora id 
       </Text>
       <Text
+        numberOfLines={1}
         style={
           Object {
             "color": "rgb(87, 96, 106)",
@@ -69,28 +70,8 @@ exports[`OpenClosedBadge should render correctly 1`] = `
           }
         }
       >
-        #5 opened on 27/03/2022, 22:56:19 by vanko
+        #5 opened on 01/01/2000, 02:00:00 by vanko
       </Text>
-    </View>
-    <View
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-    >
-      <svg
-        data-file-name="SvgBook"
-      />
     </View>
   </View>
 </View>

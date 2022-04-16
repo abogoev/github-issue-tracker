@@ -53,26 +53,14 @@ exports[`CustomTextInput should render correctly: with focus 1`] = `
           "fontFamily": "Helvetica",
           "fontSize": 14,
           "fontWeight": "400",
-          "lineHeight": 21,
+          "lineHeight": 17,
           "paddingHorizontal": 12,
-          "paddingVertical": 5,
+          "paddingVertical": 7,
         }
       }
       underlineColorAndroid="transparent"
     />
   </View>
-  <Text
-    style={
-      Object {
-        "color": "rgb(207, 34, 46)",
-        "fontFamily": "Helvetica",
-        "fontSize": 12,
-        "lineHeight": 18,
-      }
-    }
-  >
-    
-  </Text>
 </View>
 `;
 
@@ -115,25 +103,13 @@ exports[`CustomTextInput should render correctly: without focus 1`] = `
           "fontFamily": "Helvetica",
           "fontSize": 14,
           "fontWeight": "400",
-          "lineHeight": 21,
+          "lineHeight": 17,
           "paddingHorizontal": 12,
-          "paddingVertical": 5,
+          "paddingVertical": 7,
         }
       }
       underlineColorAndroid="transparent"
     />
   </View>
-  <Text
-    style={
-      Object {
-        "color": "rgb(207, 34, 46)",
-        "fontFamily": "Helvetica",
-        "fontSize": 12,
-        "lineHeight": 18,
-      }
-    }
-  >
-    
-  </Text>
 </View>
 `;

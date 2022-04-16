@@ -8,14 +8,13 @@ import CustomTouchableOpacity, {
   CustomTouchableOpacityProps,
 } from "../touchableopacity/CustomTouchableOpacity";
 // import Bookmark from "../bookmark/Bookmark";
-import { WithoutChildren } from "../../types";
+import { Issue, WithoutChildren } from "../../types";
 
-interface Props extends WithoutChildren<CustomTouchableOpacityProps> {
-  title: string;
+interface Props
+  extends WithoutChildren<CustomTouchableOpacityProps>,
+    Pick<Issue, "title" | "user" | "number"> {
   createdAt: Date;
   closedAt: Date | null;
-  user: string;
-  number: number;
 }
 
 const IssueItem: VFC<Props> = ({
@@ -42,7 +41,9 @@ const IssueItem: VFC<Props> = ({
           <Text
             numberOfLines={1}
             style={styles.description}
-          >{`#${number} opened on ${createdAt.toLocaleString()} by ${user}`}</Text>
+          >{`#${number} opened on ${createdAt.toLocaleString()} by ${
+            user.login
+          }`}</Text>
         </View>
         {/* <Bookmark owner={owner} repo={repo} number={number} /> */}
       </View>
@@ -52,7 +53,7 @@ const IssueItem: VFC<Props> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
+    padding: theme.spacing.small,
     backgroundColor: theme.palette.white,
     borderColor: theme.palette.neutral,
     borderWidth: 1,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   icon: {
-    marginHorizontal: 8,
+    marginHorizontal: theme.spacing.small,
   },
   textContainer: {
     flex: 1,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
   },
   description: {
     ...theme.typography.smallText,
-    marginTop: 4,
+    marginTop: theme.spacing.verySmall,
     color: theme.palette.darkGrey,
   },
 });

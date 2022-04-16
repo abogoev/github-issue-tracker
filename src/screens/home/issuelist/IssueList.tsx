@@ -26,8 +26,8 @@ const IssueList: VFC<Props> = ({ style, ...props }) => {
         title={item.title}
         number={item.number}
         createdAt={new Date(item.created_at)}
-        closedAt={item.closed_at && new Date(item.closed_at)}
-        user={item.user.login}
+        closedAt={item.closed_at ? new Date(item.closed_at) : null}
+        user={item.user}
         onPress={() =>
           navigation.navigate(DETAILS_SCREEN, {
             owner: item.owner,
