@@ -40,7 +40,7 @@ const Home: VFC<
 
       setIssues(currentIssues.map((c) => ({ ...c, owner, repo, state })));
       setCurrentPage(2);
-      const nums = extractSubpages(currentIssues.length, BATCH, 1);
+      const nums = extractSubpages(currentIssues.length, BATCH, 0, true);
       setNumbers(nums);
       setIndex(0);
     } catch (error) {
@@ -63,7 +63,12 @@ const Home: VFC<
       });
 
       setIssues(currentIssues.map((c) => ({ ...c, owner, repo, state })));
-      const nums = extractSubpages(currentIssues.length, BATCH, currentPage);
+      const nums = extractSubpages(
+        currentIssues.length,
+        BATCH,
+        isNext ? numbers[numbers.length - 1] : numbers[0],
+        isNext
+      );
       setNumbers(nums);
       setIndex(0);
       setCurrentPage((prev) => (isNext ? prev + 1 : prev - 1));
