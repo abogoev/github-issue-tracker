@@ -1,11 +1,5 @@
 import React, { useState, useEffect, VFC } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Comment from "./infobox/InfoBox";
 import theme from "../../theme/theme";
@@ -16,6 +10,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../router/Router";
 import { DETAILS_SCREEN } from "../../utils/constants";
 import { Issue } from "../../types";
+import CustomTouchableOpacity from "../../core/touchableopacity/CustomTouchableOpacity";
 
 const Details: VFC<
   NativeStackScreenProps<RootStackParamList, typeof DETAILS_SCREEN>
@@ -36,13 +31,13 @@ const Details: VFC<
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity
+      <CustomTouchableOpacity
         accessibilityRole="button"
         onPress={() => navigation.goBack()}
         style={styles.back}
       >
         <BackIcon width={32} height={32} />
-      </TouchableOpacity>
+      </CustomTouchableOpacity>
       {issue && (
         <ScrollView style={styles.scroll}>
           <Text style={styles.title}>{issue.title}</Text>
