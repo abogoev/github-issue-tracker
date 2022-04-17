@@ -12,7 +12,7 @@ import { RootStackParamList } from "../../router/Router";
 import { FetchIssueSearchParams, IssueIntercept } from "../../types";
 import IssueList from "./issuelist/IssueList";
 import CustomForm from "./form/CustomForm";
-import { extractSubpages, getPieceFromArray } from "./homeHelper";
+import { extractSubpages } from "./homeHelper";
 
 const BATCH = 10;
 
@@ -21,7 +21,7 @@ const Home: VFC<
 > = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [issues, setIssues] = useState<IssueIntercept[]>([]);
-  const [index, setIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
   const [numbers, setNumbers] = useState<number[]>([]);
   const [searchParams, setSearchParams] = useState<FetchIssueSearchParams>();
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +42,7 @@ const Home: VFC<
       setCurrentPage(2);
       const nums = extractSubpages(currentIssues.length, BATCH, 0, true);
       setNumbers(nums);
-      setIndex(0);
+      setPageIndex(0);
     } catch (error) {
       console.log(error);
     } finally {
@@ -70,7 +70,7 @@ const Home: VFC<
         isNext
       );
       setNumbers(nums);
-      setIndex(0);
+      setPageIndex(0);
       setCurrentPage((prev) => (isNext ? prev + 1 : prev - 1));
     } catch (error) {
       console.log(error);
@@ -98,15 +98,15 @@ const Home: VFC<
             </>
           }
           ListHeaderComponentStyle={styles.header}
-          data={getPieceFromArray(issues, index, BATCH)}
+          data={issues.slice(pageIndex * BATCH, (pageIndex + 1) * BATCH)}
           ListFooterComponent={
             numbers.length > 0 ? (
               <Pagination
                 numbers={numbers}
-                activeIndex={index}
+                activeIndex={pageIndex}
                 onPrev={() => prevOrNext(false)}
                 onNext={() => prevOrNext(true)}
-                onChangeActiveNumber={setIndex}
+                onChangeActiveNumber={setPageIndex}
               />
             ) : null
           }

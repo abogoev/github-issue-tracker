@@ -19,11 +19,3 @@ export const extractSubpages = (
 
   return nums;
 };
-
-export const getPieceFromArray = (
-  array: any[],
-  startIndex: number,
-  piecesSize: number
-) => {
-  return array.slice(startIndex * piecesSize, (startIndex + 1) * piecesSize);
-};
