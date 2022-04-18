@@ -26,7 +26,7 @@ const CustomForm: VFC<Props> = ({ onSubmit }) => {
     <Formik
       initialValues={{ [OWNER]: "", [REPO]: "", [STATE]: OPEN }}
       validationSchema={fetchIssuesValidationSchema}
-      onSubmit={onSubmit}
+      onSubmit={(values) => onSubmit(values as FetchIssueSearchParams)}
     >
       {({
         handleChange,
