@@ -14,3 +14,11 @@ It includes:
     - react-navigation for navigating between screens (Deep Linking can be easily integrated as opposed to react-router-native)
     - AsyncStorage for storing bookmarked issues (you don't lose it when you quit the app, Redux is for rerendering)
     - Formik and yup for input validation
+
+Start:
+1. navigate to the root folder
+2. 'npm install' in the Terminal
+3. 'expo prebuild' in the Terminal
+4. Start the app in the Terminal:
+- With the Expo Client - 'expo start' (press a for Android emulator, press i for IOS emulator)
+- Without the Expo Client - 'npm run android' and 'npm run ios'
