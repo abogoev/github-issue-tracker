@@ -5,7 +5,7 @@ import { AppStack } from "./Router";
 import Home from "../screens/home/Home";
 import Details from "../screens/details/Details";
 
-describe("App", () => {
+describe("Router", () => {
   it("should have Home as initial screen", () => {
     let component: ReactTestRenderer | undefined;
     act(() => {
