@@ -27,18 +27,22 @@ const containerTheme = {
   },
 };
 
+export const AppStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
+    <Stack.Screen name={HOME_SCREEN} component={Home} />
+    <Stack.Screen name={DETAILS_SCREEN} component={Details} />
+  </Stack.Navigator>
+);
+
 const Router = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={containerTheme}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name={HOME_SCREEN} component={Home} />
-          <Stack.Screen name={DETAILS_SCREEN} component={Details} />
-        </Stack.Navigator>
+        <AppStack />
       </NavigationContainer>
     </SafeAreaProvider>
   );
