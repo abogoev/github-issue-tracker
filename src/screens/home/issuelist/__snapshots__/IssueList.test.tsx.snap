@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IssueList should render correctly 1`] = `
+<RCTScrollView
+  data={
+    Array [
+      Object {
+        "body": "asd",
+        "closed_at": null,
+        "created_at": "2012-04-23T18:25:43.511Z",
+        "number": 1,
+        "owner": "Owner",
+        "repo": "Repo",
+        "title": "Title",
+        "user": Object {
+          "avatar_url": "",
+          "login": "username",
+        },
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderColor": "rgb(208, 215, 222)",
+            "borderWidth": 1,
+            "minHeight": 62,
+            "opacity": 1,
+            "padding": 8,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <svg
+            data-file-name="SvgOpenIssue"
+            style={
+              Object {
+                "marginHorizontal": 8,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#24292f",
+                  "fontFamily": "Helvetica",
+                  "fontSize": 16,
+                  "fontWeight": "600",
+                  "lineHeight": 24,
+                }
+              }
+            >
+              Title
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "rgb(87, 96, 106)",
+                  "fontFamily": "Helvetica",
+                  "fontSize": 12,
+                  "lineHeight": 18,
+                  "marginTop": 4,
+                }
+              }
+            >
+              #1 opened on 23/04/2012, 21:25:43 by username
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
