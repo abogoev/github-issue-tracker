@@ -6,9 +6,9 @@ import { create } from "react-test-renderer";
 describe("Pagination", () => {
   it("should render correctly", () => {
     const mockFunction = jest.fn();
-    const numbers = [4, 5, 6];
+    let numbers = [4, 5, 6];
 
-    const component = create(
+    let component = create(
       <Pagination
         numbers={numbers}
         activeIndex={0}
@@ -22,7 +22,21 @@ describe("Pagination", () => {
       numbers[0].toString()
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(component.toJSON()).toMatchSnapshot("with prev");
+
+    numbers = [1, 2, 3];
+
+    component = create(
+      <Pagination
+        numbers={numbers}
+        activeIndex={0}
+        onPrev={mockFunction}
+        onNext={mockFunction}
+        onChangeActiveNumber={mockFunction}
+      />
+    );
+
+    expect(component.toJSON()).toMatchSnapshot("without prev");
   });
 
   it("should call the callbacks correctly", () => {
